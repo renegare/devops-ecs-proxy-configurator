@@ -1,6 +1,6 @@
 VERSION=$(shell git rev-parse --short HEAD)
 DOCKER_REPO=renegare
-APP_NAME=consul-proxy-gen
+APP_NAME=consulproxygen
 
 
 build:
