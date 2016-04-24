@@ -9,7 +9,7 @@ const path = require('path')
 
 const config = {
   CONSUL_HOST: process.env.CONSUL_HOST || '127.0.0.1',
-  CONSUL_PORT: process.env.CONSUL_HOST || '8500',
+  CONSUL_PORT: process.env.CONSUL_PORT || '8500',
   PROXY_CONFIG_PATH: process.env.PROXY_CONFIG_PATH || path.join(__dirname, 'proxies.yml'),
   NGINX_TMPL_PATH: process.env.NGINX_TMPL_PATH || path.join(__dirname, 'nginx.conf.mu'),
   NGINX_CONF_PATH: process.env.NGINX_CONF_PATH || path.join(__dirname, 'nginx.conf'),
