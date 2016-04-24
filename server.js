@@ -12,7 +12,8 @@ const config = {
   CONSUL_PORT: process.env.CONSUL_HOST || '8500',
   PROXY_CONFIG_PATH: process.env.PROXY_CONFIG_PATH || path.join(__dirname, 'proxies.yml'),
   NGINX_TMPL_PATH: process.env.NGINX_TMPL_PATH || path.join(__dirname, 'nginx.conf.mu'),
-  NGINX_CONF_PATH: process.env.NGINX_CONF_PATH || path.join(__dirname, 'nginx.conf')
+  NGINX_CONF_PATH: process.env.NGINX_CONF_PATH || path.join(__dirname, 'nginx.conf'),
+  SERVICES_JSON_PATH: process.env.SERVICES_JSON_PATH || path.join(__dirname, 'services.json')
 }
 
 const consul = require('consul')({
@@ -48,7 +49,7 @@ watch.on('change', (services, res) => {
       Object.assign({}, service, {proxy: proxies[service.name]})))
   .filter(service => !!service.proxy && service.instances.length)
   .then(services => {
-    fs.writeFile('./services.json', JSON.stringify(services, null, '  '))
+    fs.writeFile(config.SERVICES_JSON_PATH, JSON.stringify(services, null, '  '))
     return services
   })
   .then(services => Mustache.render(template, {services}))

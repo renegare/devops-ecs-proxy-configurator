@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+  app:
+    build: .
+  volumes:
+    - .:/app
+  environment:
+    CONSUL_HOST: 192.168.99.100
+    CONSUL_PORT: 32818
+    NGINX_CONF_PATH: test-nginx.conf
+    SERVICES_JSON_PATH: test-services.json
