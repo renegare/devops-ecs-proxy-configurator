@@ -1,0 +1,6 @@
+.DS_Store
+node_modules
+*.conf
+*.json
+*.log
+proxies.yml
